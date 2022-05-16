@@ -32,12 +32,7 @@ export default function Articles() {
   const [language, setLanguage] = useState('');
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    getArticles();
-  }, []);
-
-  useEffect(() => { getArticles(); }, [category]);
-  useEffect(() => { getArticles(); }, [language]);
+  useEffect(() => { getArticles(); }, [category, language]);
 
   const getArticles = () => {
     const categoryFilter = category ? `category=${category}` : '';
