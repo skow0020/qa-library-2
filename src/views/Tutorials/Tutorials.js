@@ -32,12 +32,7 @@ export default function Tutorials() {
   const [language, setLanguage] = useState('');
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    getTutorials();
-  }, []);
-
-  useEffect(() => { getTutorials(); }, [category]);
-  useEffect(() => { getTutorials(); }, [language]);
+  useEffect(() => { getTutorials(); }, [category, language]);
 
   const getTutorials = () => {
     const categoryFilter = category ? `category=${category}` : '';

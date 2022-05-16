@@ -32,12 +32,8 @@ export default function ResourceLinks() {
   const [language, setLanguage] = useState('');
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    getResourceLinks();
-  }, []);
+  useEffect(() => { getResourceLinks(); }, [category, language]);
 
-  useEffect(() => { getResourceLinks(); }, [category]);
-  useEffect(() => { getResourceLinks(); }, [language]);
 
   const getResourceLinks = () => {
     const categoryFilter = category ? `category=${category}` : '';
