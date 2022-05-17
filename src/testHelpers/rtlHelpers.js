@@ -7,3 +7,7 @@ export const clickDropdown = async (user, dropdownLabelText, optionText) => {
     await user.click(python)
     expect(within(languageSelect).getByText(optionText)).toBeInTheDocument()
 }
+
+export const getByTextboxName = (name) => {
+    return screen.getByRole('textbox', { name: name });
+}
