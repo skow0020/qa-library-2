@@ -18,8 +18,8 @@ export default function CategoriesSelection(props) {
 
   return (
     <FormControl className={classes.formControl} >
-      <InputLabel htmlFor="category">Category</InputLabel>
-      <Select type="text" onChange={props.onChange} {...props}>
+      <InputLabel id="category-selection-label">Category</InputLabel>
+      <Select labelId='category-selection-label' type="text" onChange={props.onChange} {...props}>
         {Store.getCategoryOptions().map((category, idx) => (
           <MenuItem key={`category-option-${idx}`} value={category}>{category}</MenuItem>
         ))}

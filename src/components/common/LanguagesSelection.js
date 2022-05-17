@@ -18,8 +18,8 @@ export default function LanguagesSelection(props) {
 
   return (
     <FormControl className={classes.formControl}>
-      <InputLabel htmlFor="language-selection">Language</InputLabel>
-      <Select type="text" onChange={props.onChange} {...props}>
+      <InputLabel id="language-selection-label">Language</InputLabel>
+      <Select labelId='language-selection-label' type="text" onChange={props.onChange} {...props}>
         {Store.getLanguages().map((language, idx) => (
           <MenuItem key={`language-option-${idx}`} value={language}>{language}</MenuItem>
         ))}
