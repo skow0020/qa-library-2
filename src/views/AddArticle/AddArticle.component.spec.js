@@ -34,5 +34,6 @@ describe('AddArticle Unit Tests', () => {
 
     const submit = screen.getByRole('button', { name: 'Submit' });
     user.click(submit)
+    //Check network??
   });
 });

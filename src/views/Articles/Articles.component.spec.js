@@ -23,7 +23,7 @@ describe('Articles Unit Tests', () => {
     );
 
     await screen.findByText('Articles')
-    screen.findByText('button', 'Add Article')
+    await screen.findByText('Add Article')
     await clickDropdown(user, 'Category', 'General')
     await clickDropdown(user, 'Language', 'Swift')
     expect(screen.queryByText('Python')).toBeNull()
