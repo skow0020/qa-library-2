@@ -16,7 +16,7 @@ export const articles = {
       'backgroundImage': 'https://i-cdn.phonearena.com/images/article/104071-two_lead/Just-for-you-Here-are-10-paid-iOS-apps-free-for-a-limited-time.jpg',
       'author': 'Joelle Mayer',
       'category': 'UI Automation',
-      'language': 'Swift',
+      'language': 'Python',
       'url': 'https://qa-library-dev.herokuapp.com/qa-dashboard',
       'title': 'How to sand a hippo',
       'body': 'Dolorum consequuntur suscipit impedit impedit repudiandae qui cupiditate quis rerum. Veritatis ab ab culpa praesentium necessitatibus vitae quasi.',

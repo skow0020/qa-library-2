@@ -17,7 +17,7 @@ export const books = {
       'backgroundImage': 'https://i-cdn.phonearena.com/images/article/104071-two_lead/Just-for-you-Here-are-10-paid-iOS-apps-free-for-a-limited-time.jpg',
       'author': 'Baylee Beier',
       'category': 'UI Automation',
-      'language': 'Swift',
+      'language': 'Python',
       'url': 'https://qa-library-dev.herokuapp.com/qa-dashboard',
       'title': 'How to sand a hippo',
       'pdf': 'http://www.images.com/crazy.pdf',
