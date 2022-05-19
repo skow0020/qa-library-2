@@ -14,7 +14,7 @@ export const resourceLinks = {
       '_id': '5e220997d7ca7340bcfc9dee',
       'backgroundImage': 'https://i-cdn.phonearena.com/images/article/104071-two_lead/Just-for-you-Here-are-10-paid-iOS-apps-free-for-a-limited-time.jpg',
       'category': 'UI Automation',
-      'language': 'Swift',
+      'language': 'Python',
       'url': 'https://qa-library-dev.herokuapp.com/qa-dashboard',
       'title': 'How to sand a hippo',
       'body': 'Voluptatem qui dolore veritatis ullam tempore eos. Deserunt autem nulla praesentium magnam dolorem.',
