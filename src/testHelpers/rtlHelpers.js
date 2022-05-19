@@ -11,3 +11,9 @@ export const clickDropdown = async (user, dropdownLabelText, optionText) => {
 export const getByTextboxName = (name) => {
     return screen.getByRole('textbox', { name: name });
 }
+
+export const setTextBoxValue = async (user, name, value) => {
+    const textbox = getByTextboxName(name);
+    await user.type(textbox, value);
+    expect(textbox.value).toBe(value);
+}

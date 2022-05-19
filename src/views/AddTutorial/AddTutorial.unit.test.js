@@ -1,21 +1,35 @@
-import AddTutorial from './AddTutorial';
-import React from 'react';
-import { act } from 'react-dom/test-utils';
-import { render } from 'react-dom';
+import AddBook from './AddBook';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
+import { clickDropdown, getByTextboxName } from 'testHelpers/rtlHelpers';
 
-describe('AddTutorial Unit Tests', () => {
-  test('AddTutorial renders', async () => {
-    let container = global.container;
+describe('AddBook Unit Tests', () => {
+  test('AddBook renders', async () => {
+    const user = userEvent.setup()
+    render(<AddBook />);
 
-    await act(async () => render(<AddTutorial />, container));
+    screen.getByRole('heading', { name: 'Add a Book' });
+    const title = getByTextboxName('Title')
+    await user.type(title, 'good omens')
+    expect(title.value).toBe('good omens')
 
-    expect(container.querySelector('.page-title').textContent).toBe('Add a Tutorial');
-    expect(container.querySelector('#title-label').textContent).toContain('Title');
-    expect(container.querySelector('#category').textContent).toBe('General');
-    expect(container.querySelector('#language')).not.toBe(null);
-    expect(container.querySelector('#url-label').textContent).toContain('URL');
-    expect(container.querySelector('#backgroundImage-label').textContent).toContain('Background Image');
-    expect(container.querySelector('#body-label').textContent).toBe('Description');
-    expect(container.querySelector('#submit-button').textContent).toBe('Submit');
-  });
+    await clickDropdown(user, 'Language', 'Python')
+    await clickDropdown(user, 'Category', 'UI Automation')
+
+    const url = getByTextboxName('URL')
+    await user.type(url, 'http://www.goodomens.com')
+    expect(url.value).toBe('http://www.goodomens.com')
+
+    const backgroundImage = getByTextboxName('Background Image');
+    await user.type(backgroundImage, 'backgroundImage')
+    expect(backgroundImage.value).toBe('backgroundImage');
+
+    const description = getByTextboxName('Description');
+    await user.type(description, 'description')
+    expect(description.value).toBe('description');
+
+    const submit = screen.getByRole('button', { name: 'Submit' });
+    user.click(submit)
+    //Check network??
+  }, 10000);
 });

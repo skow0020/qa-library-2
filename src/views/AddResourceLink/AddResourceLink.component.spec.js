@@ -1,17 +1,16 @@
-import AddArticle from './AddArticle';
+import AddResourceLink from './AddResourceLink';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import { clickDropdown, setTextBoxValue } from 'testHelpers/rtlHelpers';
 
-describe('AddArticle Unit Tests', () => {
-  test('AddArticle renders', async () => {
+describe('AddResourceLink Unit Tests', () => {
+  test('AddResourceLink renders', async () => {
     const user = userEvent.setup()
-    render(<AddArticle />);
+    render(<AddResourceLink />);
 
-    screen.getByRole('heading', { name: 'Add an Article' });
-
+    screen.getByRole('heading', { name: 'Add a Resource Link' });
+    
     await setTextBoxValue(user, 'Title', 'good omens');
-    await setTextBoxValue(user, 'Author', 'Neil Gaiman');
 
     await clickDropdown(user, 'Language', 'Python')
     await clickDropdown(user, 'Category', 'UI Automation')
