@@ -11,7 +11,7 @@ let server
 
 beforeEach(() => {
   server = createServer({
-    environment: "dev",
+    environment: "test",
     urlPrefix: "https://qa-library-dev.herokuapp.com/api",
   })
 })
@@ -21,7 +21,7 @@ afterEach(() => {
 })
 
 describe('Books Unit Tests', () => {
-  test('Books renders', async () => {
+  test('Books renders and filters', async () => {
     const user = userEvent.setup()
     server.get("/books", () => books)
 
@@ -37,6 +37,9 @@ describe('Books Unit Tests', () => {
     await clickDropdown(user, 'Language', 'Swift')
     await screen.findAllByText('How to sand a hippo')
     await clickDropdown(user, 'Category', 'General')
+    
+    await screen.findAllByText('How to sand a hippo')
     expect(screen.queryByText('Python')).toBeNull()
+    expect(screen.queryByText('Swift')).not.toBeNull()
   });
 });
