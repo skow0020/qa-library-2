@@ -2,7 +2,7 @@ import ExampleRepos from './ExampleRepos';
 import { clickDropdown } from 'testHelpers/rtlHelpers';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
-import { createServer } from "testhelpers/server"
+import { createServer } from '../../testHelpers/server';
 import { repos } from './testData';
 
 let server
