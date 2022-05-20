@@ -1,8 +1,8 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import DefaultLayout from 'layouts/Default';
-import LibraryLogin from 'views/LibraryLogin/LibraryLogin';
-import Registration from 'views/Registration/Registration';
-import './App.css';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import DefaultLayout from 'layouts/Default'
+import LibraryLogin from 'views/LibraryLogin/LibraryLogin'
+import Registration from 'views/Registration/Registration'
+import './App.css'
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         </Routes >
       </div>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

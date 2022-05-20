@@ -41,6 +41,6 @@ const colors = {
   // Tooltips
   tooltipBackground: '#1B1B1D',
   appBarBackground: '#005B46'
-};
+}
 
-export default colors;
+export default colors

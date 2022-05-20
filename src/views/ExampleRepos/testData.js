@@ -187,4 +187,4 @@ export const repos = [
     'watchers': 0,
     'default_branch': 'master'
   }
-];
+]

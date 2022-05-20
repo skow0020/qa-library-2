@@ -1,20 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
-import Button from '@material-ui/core/Button';
-import CardComponent from 'components/common/CardComponent';
-import CategoriesSelection from 'components/common/CategoriesSelection';
-import Chip from '@material-ui/core/Chip';
-import Colors from 'utils/Colors';
-import Grid from '@material-ui/core/Grid';
-import LanguagesSelection from 'components/common/LanguagesSelection';
-import { Link } from 'react-router-dom';
-import LoadError from 'components/common/LoadError';
-import Loading from 'components/common/Loading';
-import PageTitle from 'components/common/PageTitle';
-import { getCategoryTheme } from 'utils/util';
-import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button'
+import CardComponent from 'components/common/CardComponent'
+import CategoriesSelection from 'components/common/CategoriesSelection'
+import Chip from '@material-ui/core/Chip'
+import Colors from 'utils/Colors'
+import Grid from '@material-ui/core/Grid'
+import LanguagesSelection from 'components/common/LanguagesSelection'
+import { Link } from 'react-router-dom'
+import LoadError from 'components/common/LoadError'
+import Loading from 'components/common/Loading'
+import PageTitle from 'components/common/PageTitle'
+import { getCategoryTheme } from 'utils/util'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   addButton: {
@@ -22,41 +22,41 @@ const useStyles = makeStyles(() => ({
     color: Colors.white,
     marginLeft: 'auto'
   }
-}));
+}))
 
 export default function Tutorials() {
-  const classes = useStyles();
-  const [tutorials, setTutorials] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [category, setCategory] = useState('');
-  const [language, setLanguage] = useState('');
-  const [error, setError] = useState('');
+  const classes = useStyles()
+  const [tutorials, setTutorials] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [category, setCategory] = useState('')
+  const [language, setLanguage] = useState('')
+  const [error, setError] = useState('')
 
-  useEffect(() => { getTutorials(); }, [category, language]);
+  useEffect(() => { getTutorials() }, [category, language])
 
   const getTutorials = () => {
-    const categoryFilter = category ? `category=${category}` : '';
-    const languageFilter = language ? `language=${language}` : '';
-    const filter = `${categoryFilter}&${languageFilter}`;
+    const categoryFilter = category ? `category=${category}` : ''
+    const languageFilter = language ? `language=${language}` : ''
+    const filter = `${categoryFilter}&${languageFilter}`
 
-    setIsLoading(true);
+    setIsLoading(true)
     fetch(`${process.env.REACT_APP_MONGO_ENV_URL}/api/tutorials?${filter}`)
       .then(response => response.json())
       .then(
         data => {
-          setTutorials(data.data);
-          setIsLoading(false);
+          setTutorials(data.data)
+          setIsLoading(false)
         },
         error => {
-          setError(error);
-          setIsLoading(false);
+          setError(error)
+          setIsLoading(false)
         }
-      );
-  };
+      )
+  }
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <Loading />
 
-  if (error) return <LoadError error="Tutorials failed to load" />;
+  if (error) return <LoadError error="Tutorials failed to load" />
 
   return (
     <Grid container>
@@ -92,5 +92,5 @@ export default function Tutorials() {
         ))}
       </Grid>
     </Grid>
-  );
+  )
 }

@@ -1,45 +1,45 @@
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import classNames from 'classnames';
-import { makeStyles } from '@material-ui/core/styles';
-import styles from 'assets/jss/components/sidebarStyle.js';
+import Drawer from '@material-ui/core/Drawer'
+import Hidden from '@material-ui/core/Hidden'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import { NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import React, { useState } from 'react'
+import classNames from 'classnames'
+import { makeStyles } from '@material-ui/core/styles'
+import styles from 'assets/jss/components/sidebarStyle.js'
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles)
 
 export default function MainSidebar(props) {
-  const classes = useStyles();
+  const classes = useStyles()
 
   function activeRoute(routeName) {
-    return window.location.href.indexOf(routeName) > -1 ? true : false;
+    return window.location.href.indexOf(routeName) > -1 ? true : false
   }
 
   function closeIfMobile() {
-    if (props.open) props.handleDrawerToggle();
+    if (props.open) props.handleDrawerToggle()
     // eslint-disable-next-line
     const [value, setValue] = useState(0);
-    return () => setValue(value => value + 1); // Used to force a re-render and highlight selected item
+    return () => setValue(value => value + 1) // Used to force a re-render and highlight selected item
   }
 
-  const { color, logo, image, logoText, routes } = props;
+  const { color, logo, image, logoText, routes } = props
 
   var links = (
     <List className={classes.list}>
       {routes.map((prop, key) => {
         const whiteFontClasses = classNames({
           [' ' + classes.whiteFont]: activeRoute(prop.path)
-        });
-        var listItemClasses;
+        })
+        var listItemClasses
 
         if (prop.icon) {
           listItemClasses = classNames({
             [' ' + classes[color]]: activeRoute(prop.path)
-          });
+          })
 
           return (
             <NavLink
@@ -59,12 +59,12 @@ export default function MainSidebar(props) {
                 />
               </ListItem>
             </NavLink>
-          );
+          )
         }
-        return false;
+        return false
       })}
     </List>
-  );
+  )
 
   var brand = (
     <div className={classes.logo}>
@@ -75,7 +75,7 @@ export default function MainSidebar(props) {
         {logoText}
       </div>
     </div>
-  );
+  )
   
   return (
     <div>
@@ -126,7 +126,7 @@ export default function MainSidebar(props) {
         </Drawer>
       </Hidden>
     </div>
-  );
+  )
 }
 
 MainSidebar.propTypes = {
@@ -136,5 +136,6 @@ MainSidebar.propTypes = {
   image: PropTypes.string,
   logoText: PropTypes.string,
   routes: PropTypes.arrayOf(PropTypes.object),
-  open: PropTypes.bool
-};
+  open: PropTypes.bool,
+  color: PropTypes.string
+}

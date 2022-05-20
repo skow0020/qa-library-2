@@ -34,4 +34,4 @@ export const tutorials = {
       'tut_id': 1002
     }
   ]
-};
+}

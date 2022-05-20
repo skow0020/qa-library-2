@@ -1,11 +1,11 @@
-import { BrowserRouter as Router } from 'react-router-dom';
-import { clickDropdown } from 'testHelpers/rtlHelpers';
-import { render, screen } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom'
+import { clickDropdown } from 'testHelpers/rtlHelpers'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { createServer } from '../../testHelpers/server';
+import { createServer } from '../../testHelpers/server'
 
-import ResourceLinks from './ResourceLinks';
-import { resourceLinks } from './testData';
+import ResourceLinks from './ResourceLinks'
+import { resourceLinks } from './testData'
 
 let server
 
@@ -20,12 +20,12 @@ afterEach(() => {
 describe('ResourceLinks Unit Tests', () => {
   test('ResourceLinks renders', async () => {
     const user = userEvent.setup()
-    server.get("/resourceLinks", () => resourceLinks)
+    server.get('/resourceLinks', () => resourceLinks)
 
     render(
       <Router>
         <ResourceLinks />
-      </Router>);
+      </Router>)
       
     await screen.findByText('ResourceLinks')
     screen.getByRole('button', { name: 'Add Resource Link' })
@@ -37,5 +37,5 @@ describe('ResourceLinks Unit Tests', () => {
     await screen.findAllByText('How to sand a hippo')
     expect(screen.queryByText('Python')).not.toBeInTheDocument()
     expect(screen.getByText('Swift')).toBeInTheDocument()
-  });
-});
+  })
+})

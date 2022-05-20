@@ -1,5 +1,5 @@
-import Grid from '@material-ui/core/Grid';
-import React from 'react';
+import Grid from '@material-ui/core/Grid'
+import React from 'react'
 
 const NotFound = () => (
   <Grid
@@ -10,6 +10,6 @@ const NotFound = () => (
   >
     <h3 id="not-found" align="center">Hmm... the page you are looking for seems to have disappeared... if it has ever existed</h3>
   </Grid>
-);
+)
 
-export default NotFound;
+export default NotFound

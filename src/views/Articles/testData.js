@@ -34,4 +34,4 @@ export const articles = {
       'article_id': 1002
     }
   ]
-};
+}

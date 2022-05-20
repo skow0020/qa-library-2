@@ -1,73 +1,73 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
-import CardComponent from 'components/common/CardComponent';
-import Chip from '@material-ui/core/Chip';
-import Colors from 'utils/Colors';
-import Grid from '@material-ui/core/Grid';
-import LanguagesSelection from 'components/common/LanguagesSelection';
-import LoadError from 'components/common/LoadError';
-import Loading from 'components/common/Loading';
-import PageTitle from 'components/common/PageTitle';
-import TextField from 'components/common/TextField';
-import Typography from '@material-ui/core/Typography';
-import { getLanguageTheme } from 'utils/util';
-import { makeStyles } from '@material-ui/core/styles';
+import CardComponent from 'components/common/CardComponent'
+import Chip from '@material-ui/core/Chip'
+import Colors from 'utils/Colors'
+import Grid from '@material-ui/core/Grid'
+import LanguagesSelection from 'components/common/LanguagesSelection'
+import LoadError from 'components/common/LoadError'
+import Loading from 'components/common/Loading'
+import PageTitle from 'components/common/PageTitle'
+import TextField from 'components/common/TextField'
+import Typography from '@material-ui/core/Typography'
+import { getLanguageTheme } from 'utils/util'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   githubUser: {
     marginLeft: 'auto'
   }
-}));
+}))
 
 export default function ExampleRepos() {
-  const classes = useStyles();
-  const [githubAccount, setGithubAccount] = useState('skow0020');
-  const [githubRepos, setGithubRepos] = useState([]);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [filter, setFilter] = useState('');
+  const classes = useStyles()
+  const [githubAccount, setGithubAccount] = useState('skow0020')
+  const [githubRepos, setGithubRepos] = useState([])
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [filter, setFilter] = useState('')
 
   useEffect(() => {
-    getRepos();
-  }, []);
+    getRepos()
+  }, [])
 
   useEffect(() => {
-    getRepos();
-  }, [filter]);
+    getRepos()
+  }, [filter])
 
   const getRepos = () => {
-    setIsLoading(true);
-    setError(null);
+    setIsLoading(true)
+    setError(null)
     fetch(`https://api.github.com/users/${githubAccount}/repos`)
       .then(res => res.json())
       .then(
         (results) => {
-          setIsLoading(false);
+          setIsLoading(false)
           if (results.message === 'Not Found') {
-            setError('Unable to find repos for the account provided');
-            return;
+            setError('Unable to find repos for the account provided')
+            return
           }
           if (filter) {
-            if (filter === 'CSharp') results = results.filter(repo => { return repo.language === 'C#'; });
-            else results = results.filter(repo => { return repo.language === filter; });
+            if (filter === 'CSharp') results = results.filter(repo => { return repo.language === 'C#' })
+            else results = results.filter(repo => { return repo.language === filter })
           }
 
-          setGithubRepos(results);
+          setGithubRepos(results)
         },
         (error) => {
-          setIsLoading(false);
-          setError(error);
+          setIsLoading(false)
+          setError(error)
         }
-      );
-  };
+      )
+  }
 
   const handleGithubAccountSubmit = (e) => {
-    e.preventDefault();
-    setGithubAccount(githubAccount);
-    getRepos();
-  };
+    e.preventDefault()
+    setGithubAccount(githubAccount)
+    getRepos()
+  }
 
   return (
     <Grid container>
@@ -104,5 +104,5 @@ export default function ExampleRepos() {
         ))}
       </Grid>
     </Grid>
-  );
+  )
 }

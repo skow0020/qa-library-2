@@ -1,23 +1,23 @@
-import Colors from 'utils/Colors';
-import PropTypes from 'prop-types';
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
+import Colors from 'utils/Colors'
+import PropTypes from 'prop-types'
+import React from 'react'
+import TextField from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   textField: {
     backgroundColor: Colors.white
   }
-}));
+}))
 
 export default function TextField2(props) {
-  const classes = useStyles();
+  const classes = useStyles()
   const {
     onChange,
     value,
     id,
     label
-  } = props;
+  } = props
 
   return (
     <TextField
@@ -31,7 +31,7 @@ export default function TextField2(props) {
       }} onChange={onChange}
       {...props}
     />
-  );
+  )
 }
 
 TextField2.propTypes = {
@@ -39,4 +39,4 @@ TextField2.propTypes = {
   value: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired
-};
+}

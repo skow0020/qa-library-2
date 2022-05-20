@@ -1,8 +1,8 @@
-import { CategoryOptions, Languages } from './constants';
+import { CategoryOptions, Languages } from './constants'
 
-import Constants from './constants';
-import Dispatcher from './dispatcher';
-import { EventEmitter } from 'events';
+import Constants from './constants'
+import Dispatcher from './dispatcher'
+import { EventEmitter } from 'events'
 
 let _store = {
   menuVisible: false,
@@ -10,15 +10,15 @@ let _store = {
   avatarUrl: null,
   categoryOptions: CategoryOptions(),
   languages: Languages()
-};
+}
 
 class Store extends EventEmitter {
   constructor() {
-    super();
+    super()
 
-    this.registerToActions = this.registerToActions.bind(this);
+    this.registerToActions = this.registerToActions.bind(this)
 
-    Dispatcher.register(this.registerToActions.bind(this));
+    Dispatcher.register(this.registerToActions.bind(this))
   }
 
   registerToActions({ actionType, payload }) {
@@ -28,24 +28,24 @@ class Store extends EventEmitter {
   }
 
   getMenuState() {
-    return _store.menuVisible;
+    return _store.menuVisible
   }
 
   getCategoryOptions() {
-    return _store.categoryOptions;
+    return _store.categoryOptions
   }
 
   getLanguages() {
-    return _store.languages;
+    return _store.languages
   }
 
   addChangeListener(callback) {
-    this.on(Constants.CHANGE, callback);
+    this.on(Constants.CHANGE, callback)
   }
 
   removeChangeListener(callback) {
-    this.removeListener(Constants.CHANGE, callback);
+    this.removeListener(Constants.CHANGE, callback)
   }
 }
 
-export default new Store();
+export default new Store()

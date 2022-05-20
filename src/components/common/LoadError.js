@@ -1,15 +1,15 @@
-import Grid from '@material-ui/core/Grid';
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid'
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   root: {
     textAlign: 'center'
   }
-}));
+}))
 
 export default function Error({ error = 'Try refreshing maybe?'}) {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Grid
@@ -23,5 +23,5 @@ export default function Error({ error = 'Try refreshing maybe?'}) {
         <p>{error}</p>
       </div>
     </Grid>
-  );
+  )
 };

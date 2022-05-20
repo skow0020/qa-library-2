@@ -1,35 +1,35 @@
-import Button from 'components/common/Button';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
-import { Link } from 'react-router-dom';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
-import Paper from '@material-ui/core/Paper';
-import Person from '@material-ui/icons/Person';
-import Poppers from '@material-ui/core/Popper';
-import React from 'react';
-import Search from '@material-ui/icons/Search';
-import classNames from 'classnames';
-import { makeStyles } from '@material-ui/core/styles';
-import styles from 'assets/jss/components/headerLinksStyle.js';
+import Button from 'components/common/Button'
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
+import Grow from '@material-ui/core/Grow'
+import { Link } from 'react-router-dom'
+import MenuItem from '@material-ui/core/MenuItem'
+import MenuList from '@material-ui/core/MenuList'
+import Paper from '@material-ui/core/Paper'
+import Person from '@material-ui/icons/Person'
+import Poppers from '@material-ui/core/Popper'
+import React from 'react'
+import Search from '@material-ui/icons/Search'
+import classNames from 'classnames'
+import { makeStyles } from '@material-ui/core/styles'
+import styles from 'assets/jss/components/headerLinksStyle.js'
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles)
 
 export default function NavbarLinks() {
-  const classes = useStyles();
-  const [openMenu, setOpenMenu] = React.useState(null);
+  const classes = useStyles()
+  const [openMenu, setOpenMenu] = React.useState(null)
 
   const handleClickMenu = event => {
     if (openMenu && openMenu.contains(event.target)) {
-      setOpenMenu(null);
+      setOpenMenu(null)
     } else {
-      setOpenMenu(event.currentTarget);
+      setOpenMenu(event.currentTarget)
     }
-  };
+  }
 
   const handleCloseProfile = () => {
-    setOpenMenu(null);
-  };
+    setOpenMenu(null)
+  }
   return (
     <div>
       <div className={classes.searchWrapper}>
@@ -88,5 +88,5 @@ export default function NavbarLinks() {
         </Poppers>
       </div>
     </div>
-  );
+  )
 }

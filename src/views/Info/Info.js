@@ -1,10 +1,10 @@
-import Colors from 'utils/Colors.js';
-import Container from '@material-ui/core/Container';
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import Colors from 'utils/Colors.js'
+import Container from '@material-ui/core/Container'
+import React from 'react'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
 
-const backgroundImage = require('images/code1.jpg');
+const backgroundImage = require('images/code1.jpg')
 
 const useStyles = makeStyles(() => ({
   caption: {
@@ -22,10 +22,10 @@ const useStyles = makeStyles(() => ({
     marginLeft: 'auto',
     marginRight: 'auto'
   }
-}));
+}))
 
 export default function Info() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Container id="info-container">
@@ -39,5 +39,5 @@ export default function Info() {
         </Typography>
       </div>
     </Container>
-  );
+  )
 }

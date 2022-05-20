@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import SearchResults from 'components/common/SearchResults';
-import TextField from 'components/common/TextField';
-import axios from 'axios';
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
+import SearchResults from 'components/common/SearchResults'
+import TextField from 'components/common/TextField'
+import axios from 'axios'
 
 export default function Search() {
-  const [query, setQuery] = useState('');
-  const [bookResults, setBookResults] = useState(null);
-  const [articleResults, setArticleResults] = useState(null);
-  const [tutorialResults, setTutorialResults] = useState(null);
-  const [resourceLinkResults, setResourceLinkResults] = useState(null);
+  const [query, setQuery] = useState('')
+  const [bookResults, setBookResults] = useState(null)
+  const [articleResults, setArticleResults] = useState(null)
+  const [tutorialResults, setTutorialResults] = useState(null)
+  const [resourceLinkResults, setResourceLinkResults] = useState(null)
 
   const getInfo = () => {
     axios.get(`${process.env.REACT_APP_MONGO_ENV_URL}/api/books?search=${query}`)
@@ -24,13 +24,13 @@ export default function Search() {
         ))
       .then(axios.get(`${process.env.REACT_APP_MONGO_ENV_URL}/api/resourceLinks?search=${query}`)
         .then(({ data }) => setResourceLinkResults(data.data)
-        ));
-  };
+        ))
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    getInfo();
-  };
+    e.preventDefault()
+    getInfo()
+  }
 
   return (
     <Container>
@@ -44,5 +44,5 @@ export default function Search() {
       {resourceLinkResults && <SearchResults searchType='Resource Links' results={resourceLinkResults} />}
       {articleResults && <SearchResults searchType='Articles' results={articleResults} />}
     </Container>
-  );
+  )
 }

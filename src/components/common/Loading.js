@@ -1,8 +1,8 @@
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Colors from 'utils/Colors';
-import Grid from '@material-ui/core/Grid';
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Colors from 'utils/Colors'
+import Grid from '@material-ui/core/Grid'
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,10 +14,10 @@ const useStyles = makeStyles(theme => ({
   circular: {
     color: Colors.primary
   }
-}));
+}))
 
 export default function Loading() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Grid
@@ -30,5 +30,5 @@ export default function Loading() {
         <CircularProgress id="loading" className={classes.circular} />
       </div>
     </Grid>
-  );
+  )
 }

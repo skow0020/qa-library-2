@@ -1,16 +1,16 @@
-import AddTutorial from './AddTutorial';
-import { render, screen } from '@testing-library/react';
+import AddTutorial from './AddTutorial'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { clickDropdown } from 'testHelpers/rtlHelpers';
-import { setTextBoxValue } from 'testHelpers/rtlHelpers';
+import { clickDropdown } from 'testHelpers/rtlHelpers'
+import { setTextBoxValue } from 'testHelpers/rtlHelpers'
 
 describe('AddTutorial Unit Tests', () => {
   test('AddTutorial renders', async () => {
     const user = userEvent.setup()
-    render(<AddTutorial />);
+    render(<AddTutorial />)
 
-    screen.getByRole('heading', { name: 'Add a Tutorial' });
-    await setTextBoxValue(user, 'Title', 'good omens');
+    screen.getByRole('heading', { name: 'Add a Tutorial' })
+    await setTextBoxValue(user, 'Title', 'good omens')
 
     await clickDropdown(user, 'Language', 'Python')
     await clickDropdown(user, 'Category', 'UI Automation')
@@ -19,8 +19,8 @@ describe('AddTutorial Unit Tests', () => {
     await setTextBoxValue(user, 'Background Image', 'backgroundImage')
     await setTextBoxValue(user, 'Description', 'description')
 
-    const submit = screen.getByRole('button', { name: 'Submit' });
+    const submit = screen.getByRole('button', { name: 'Submit' })
     user.click(submit)
     //Check network??
-  }, 10000);
-});
+  }, 10000)
+})

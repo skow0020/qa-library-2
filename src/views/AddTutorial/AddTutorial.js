@@ -1,16 +1,16 @@
-import AlertModal, { showAlert } from 'components/common/AlertModal';
-import React, { useState } from 'react';
+import AlertModal, { showAlert } from 'components/common/AlertModal'
+import React, { useState } from 'react'
 
-import Button from '@material-ui/core/Button';
-import CategoriesSelection from 'components/common/CategoriesSelection';
-import Colors from 'utils/Colors';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import LanguagesSelection from 'components/common/LanguagesSelection';
-import PageTitle from 'components/common/PageTitle';
-import TextField from 'components/common/TextField';
-import axios from 'axios';
-import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button'
+import CategoriesSelection from 'components/common/CategoriesSelection'
+import Colors from 'utils/Colors'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
+import LanguagesSelection from 'components/common/LanguagesSelection'
+import PageTitle from 'components/common/PageTitle'
+import TextField from 'components/common/TextField'
+import axios from 'axios'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
   submit: {
@@ -33,19 +33,19 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     backgroundColor: Colors.white
   }
-}));
+}))
 
 export default function AddTutorial(props) {
-  const classes = useStyles();
-  const [backgroundImage, setBackgroundImage] = useState('');
-  const [category, setCategory] = useState('General');
-  const [url, setUrl] = useState('');
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
-  const [language, setLanguage] = useState('');
+  const classes = useStyles()
+  const [backgroundImage, setBackgroundImage] = useState('')
+  const [category, setCategory] = useState('General')
+  const [url, setUrl] = useState('')
+  const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
+  const [language, setLanguage] = useState('')
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     const tutorial = {
       backgroundImage,
       category,
@@ -53,24 +53,24 @@ export default function AddTutorial(props) {
       title,
       body,
       language
-    };
+    }
 
     axios.post(`${process.env.REACT_APP_MONGO_ENV_URL}/api/tutorials/`, tutorial)
       .then(
         response => {
-          if (response.data.success) showAlert({ message: 'Tutorial added successfully' });
-          else showAlert({ message: `Unable to add tutorial: ${JSON.stringify(response.data.error.errors)}` });
-          nextPath('/tutorials');
+          if (response.data.success) showAlert({ message: 'Tutorial added successfully' })
+          else showAlert({ message: `Unable to add tutorial: ${JSON.stringify(response.data.error.errors)}` })
+          nextPath('/tutorials')
         },
         error => showAlert({ message: `Unable to add tutorial: ${error}` })
-      );
-  };
+      )
+  }
 
   const nextPath = (path) => {
     setTimeout(function () {
-      props.history.push(path);
-    }, 2000);
-  };
+      props.history.push(path)
+    }, 2000)
+  }
 
   return (
     <Container component="main">
@@ -106,5 +106,5 @@ export default function AddTutorial(props) {
         </form>
       </div>
     </Container>
-  );
+  )
 }

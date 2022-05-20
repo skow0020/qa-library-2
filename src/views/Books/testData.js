@@ -37,4 +37,4 @@ export const books = {
       'book_id': 1002
       }
   ]
-};
+}

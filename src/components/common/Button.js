@@ -1,14 +1,14 @@
-import Button from '@material-ui/core/Button';
-import PropTypes from 'prop-types';
-import React from 'react';
-import classNames from 'classnames';
-import { makeStyles } from '@material-ui/core/styles';
-import styles from 'assets/jss/components/buttonStyle.js';
+import Button from '@material-ui/core/Button'
+import PropTypes from 'prop-types'
+import React from 'react'
+import classNames from 'classnames'
+import { makeStyles } from '@material-ui/core/styles'
+import styles from 'assets/jss/components/buttonStyle.js'
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles)
 
 export default function RegularButton(props) {
-  const classes = useStyles();
+  const classes = useStyles()
   const {
     color,
     round,
@@ -22,7 +22,7 @@ export default function RegularButton(props) {
     className,
     muiClasses,
     ...rest
-  } = props;
+  } = props
   const btnClasses = classNames({
     [classes.button]: true,
     [classes[size]]: size,
@@ -34,12 +34,12 @@ export default function RegularButton(props) {
     [classes.link]: link,
     [classes.justIcon]: justIcon,
     [className]: className
-  });
+  })
   return (
     <Button {...rest} classes={muiClasses} className={btnClasses}>
       {children}
     </Button>
-  );
+  )
 }
 
 RegularButton.propTypes = {
@@ -63,4 +63,4 @@ RegularButton.propTypes = {
   className: PropTypes.string,
   muiClasses: PropTypes.object,
   children: PropTypes.node
-};
+}

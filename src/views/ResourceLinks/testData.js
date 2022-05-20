@@ -31,4 +31,4 @@ export const resourceLinks = {
       'res_id': 1002
     }
   ]
-};
+}

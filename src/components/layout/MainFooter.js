@@ -1,13 +1,13 @@
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import styles from 'assets/jss/components/footerStyle.js';
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import styles from 'assets/jss/components/footerStyle.js'
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles)
 
 export default function Footer() {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <footer className={classes.footer}>
       <div className={classes.container}>
@@ -43,5 +43,5 @@ export default function Footer() {
         </p>
       </div>
     </footer>
-  );
+  )
 }

@@ -1,47 +1,47 @@
-import Colors from './Colors';
+import Colors from './Colors'
 
 const getCategoryTheme = (category) => {
-  if (!category) return 'dark';
+  if (!category) return 'dark'
   switch (category.toLowerCase()) {
     case 'general':
-      return Colors.primary;
+      return Colors.primary
     case 'ui automation':
-      return Colors.blue;
+      return Colors.blue
     case 'api automation':
-      return Colors.red;
+      return Colors.red
     case 'unit testing':
-      return Colors.green;
+      return Colors.green
     case 'devops':
-      return Colors.cyan;
+      return Colors.cyan
     case 'development':
-      return Colors.purple;
+      return Colors.purple
     case 'databasaes':
-      return Colors.teal;
+      return Colors.teal
     default:
-      return Colors.deactivated;
+      return Colors.deactivated
   }
-};
+}
 
 const getLanguageTheme = (language) => {
-  if (!language) return 'dark';
+  if (!language) return 'dark'
   switch (language.toLowerCase()) {
     case 'java':
-      return Colors.purple;
+      return Colors.purple
     case 'c#':
-      return Colors.blue;
+      return Colors.blue
     case 'javascript':
-      return Colors.green;
+      return Colors.green
     case 'python':
-      return Colors.cyan;
+      return Colors.cyan
     case 'ruby':
-      return Colors.red;
+      return Colors.red
     case 'cpp':
-      return Colors.purple;
+      return Colors.purple
     case 'swift':
-      return Colors.teal;
+      return Colors.teal
     default:
-      return Colors.deactivated;
+      return Colors.deactivated
   }
-};
+}
 
-export{ getCategoryTheme, getLanguageTheme };
+export{ getCategoryTheme, getLanguageTheme }
