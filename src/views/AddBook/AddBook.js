@@ -59,7 +59,7 @@ export default function AddBook(props) {
       language
     }
 
-    axios.post(`${process.env.REACT_APP_MONGO_ENV_URL}/api/books/`, book)
+    axios.post(`${process.env.REACT_APP_ENV_URL}/api/books/`, book)
       .then(
         response => {
           if (response.data.success) showAlert({ message: 'Book added successfully' })

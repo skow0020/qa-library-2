@@ -40,7 +40,7 @@ export default function Articles() {
     const filter = `${categoryFilter}&${languageFilter}`
 
     setIsLoading(true)
-    fetch(`${process.env.REACT_APP_MONGO_ENV_URL}/api/articles?${filter}`)
+    fetch(`${process.env.REACT_APP_ENV_URL}/api/articles?${filter}`)
       .then(response => response.json())
       .then(
         data => {

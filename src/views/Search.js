@@ -14,15 +14,15 @@ export default function Search() {
   const [resourceLinkResults, setResourceLinkResults] = useState(null)
 
   const getInfo = () => {
-    axios.get(`${process.env.REACT_APP_MONGO_ENV_URL}/api/books?search=${query}`)
+    axios.get(`${process.env.REACT_APP_ENV_URL}/api/books?search=${query}`)
       .then(({ data }) => setBookResults(data.data))
-      .then(axios.get(`${process.env.REACT_APP_MONGO_ENV_URL}/api/articles?search=${query}`)
+      .then(axios.get(`${process.env.REACT_APP_ENV_URL}/api/articles?search=${query}`)
         .then(({ data }) => setArticleResults(data.data)
         ))
-      .then(axios.get(`${process.env.REACT_APP_MONGO_ENV_URL}/api/tutorials?search=${query}`)
+      .then(axios.get(`${process.env.REACT_APP_ENV_URL}/api/tutorials?search=${query}`)
         .then(({ data }) => setTutorialResults(data.data)
         ))
-      .then(axios.get(`${process.env.REACT_APP_MONGO_ENV_URL}/api/resourceLinks?search=${query}`)
+      .then(axios.get(`${process.env.REACT_APP_ENV_URL}/api/resourceLinks?search=${query}`)
         .then(({ data }) => setResourceLinkResults(data.data)
         ))
   }

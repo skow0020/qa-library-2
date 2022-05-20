@@ -41,7 +41,7 @@ export default function ResourceLinks() {
     const filter = `${categoryFilter}&${languageFilter}`
 
     setIsLoading(true)
-    fetch(`${process.env.REACT_APP_MONGO_ENV_URL}/api/resourceLinks?${filter}`)
+    fetch(`${process.env.REACT_APP_ENV_URL}/api/resourceLinks?${filter}`)
       .then(response => response.json())
       .then(
         data => {

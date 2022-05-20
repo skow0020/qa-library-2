@@ -57,7 +57,7 @@ export default function AddArticle(props) {
       language
     }
 
-    axios.post(`${process.env.REACT_APP_MONGO_ENV_URL}/api/articles/`, article)
+    axios.post(`${process.env.REACT_APP_ENV_URL}/api/articles/`, article)
       .then(
         response => {
           if (response.data.success) showAlert({ message: 'Article added successfully' })

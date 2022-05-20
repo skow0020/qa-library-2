@@ -55,7 +55,7 @@ export default function AddTutorial(props) {
       language
     }
 
-    axios.post(`${process.env.REACT_APP_MONGO_ENV_URL}/api/tutorials/`, tutorial)
+    axios.post(`${process.env.REACT_APP_ENV_URL}/api/tutorials/`, tutorial)
       .then(
         response => {
           if (response.data.success) showAlert({ message: 'Tutorial added successfully' })

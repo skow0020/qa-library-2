@@ -44,7 +44,7 @@ export default function Registration() {
 
   function onSubmit(event) {
     event.preventDefault()
-    fetch(`${process.env.REACT_APP_MONGO_ENV_URL}/api/users/register`, {
+    fetch(`${process.env.REACT_APP_ENV_URL}/api/users/register`, {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' }

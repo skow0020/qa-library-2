@@ -40,7 +40,7 @@ export default function Tutorials() {
     const filter = `${categoryFilter}&${languageFilter}`
 
     setIsLoading(true)
-    fetch(`${process.env.REACT_APP_MONGO_ENV_URL}/api/tutorials?${filter}`)
+    fetch(`${process.env.REACT_APP_ENV_URL}/api/tutorials?${filter}`)
       .then(response => response.json())
       .then(
         data => {

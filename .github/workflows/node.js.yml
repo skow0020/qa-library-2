@@ -10,7 +10,7 @@ on:
     branches: [ main ]
 
 env:
-  REACT_APP_MONGO_ENV_URL: "https://qa-library-dev.herokuapp.com"
+  REACT_APP_ENV_URL: "https://qa-library-dev.herokuapp.com"
 
 jobs:
   build:

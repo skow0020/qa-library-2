@@ -55,7 +55,7 @@ export default function AddBook(props) {
       language
     }
 
-    axios.post(`${process.env.REACT_APP_MONGO_ENV_URL}/api/resourceLinks/`, resourceLink)
+    axios.post(`${process.env.REACT_APP_ENV_URL}/api/resourceLinks/`, resourceLink)
       .then(
         response => {
           if (response.data.success) showAlert({ message: 'ResourceLink added successfully' })

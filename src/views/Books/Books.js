@@ -40,7 +40,7 @@ export default function Books() {
 
   const getBooks = () => {
     setIsLoading(true)
-    fetch(`${process.env.REACT_APP_MONGO_ENV_URL}/api/books?${filter}`)
+    fetch(`${process.env.REACT_APP_ENV_URL}/api/books?${filter}`)
       .then(response => response.json())
       .then(
         data => {
