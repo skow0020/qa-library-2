@@ -1,0 +1,12 @@
+# Deploy preview on the dev environment for testing
+[context.deploy-preview.environment]
+  REACT_APP_ENV_URL = https://qa-library-dev.herokuapp.com
+
+# Deploy branches on the dev environment for testing
+[context.branch-deploy.environment]
+  REACT_APP_ENV_URL=https://qa-library-dev.herokuapp.com
+
+# Deploy main branch with prod
+[context.main.environment]
+  REACT_APP_ENV_URL=https://qa-library.herokuapp.com
+
