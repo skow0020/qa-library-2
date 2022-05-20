@@ -5,6 +5,8 @@ import userEvent from '@testing-library/user-event'
 import { createServer } from "testhelpers/server"
 import { repos } from './testData';
 
+let server
+
 beforeEach(() => {
   server = createServer
 })

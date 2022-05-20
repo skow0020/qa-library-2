@@ -35,7 +35,7 @@ describe('Articles Unit Tests', () => {
     await screen.findAllByText('How to sand a hippo')
     await clickDropdown(user, 'Language', 'Swift')
     await screen.findAllByText('How to sand a hippo')
-    expect(screen.queryByText('Python')).toBeNull()
-    expect(screen.queryByText('Swift')).not.toBeNull()
+    expect(screen.queryByText('Python')).not.toBeInTheDocument()
+    expect(screen.getByText('Swift')).toBeInTheDocument()
   });
 });

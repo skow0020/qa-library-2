@@ -7,6 +7,8 @@ import { createServer } from "testhelpers/server"
 import Tutorials from './Tutorials';
 import { tutorials } from './testData';
 
+let server
+
 beforeEach(() => {
   server = createServer
 })
@@ -33,7 +35,7 @@ describe('Tutorials Unit Tests', () => {
     await clickDropdown(user, 'Category', 'General')
 
     await screen.findAllByText('How to sand a hippo')
-    expect(screen.queryByText('Python')).toBeNull()
-    expect(screen.queryByText('Swift')).not.toBeNull()
+    expect(screen.queryByText('Python')).not.toBeInTheDocument()
+    expect(screen.getByText('Swift')).toBeInTheDocument()
   });
 });
