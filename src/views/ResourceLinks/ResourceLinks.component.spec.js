@@ -2,7 +2,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { clickDropdown } from 'testHelpers/rtlHelpers';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
-import { createServer } from "miragejs"
+import { createServer } from "testhelpers/server"
 
 import ResourceLinks from './ResourceLinks';
 import { resourceLinks } from './testData';
@@ -10,10 +10,7 @@ import { resourceLinks } from './testData';
 let server
 
 beforeEach(() => {
-  server = createServer({
-    environment: "test",
-    urlPrefix: "https://qa-library-dev.herokuapp.com/api",
-  })
+  server = createServer
 })
 
 afterEach(() => {

@@ -2,14 +2,11 @@ import ExampleRepos from './ExampleRepos';
 import { clickDropdown } from 'testHelpers/rtlHelpers';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
-import { createServer } from 'miragejs';
+import { createServer } from "testhelpers/server"
 import { repos } from './testData';
 
 beforeEach(() => {
-  server = createServer({
-    environment: "test",
-    urlPrefix: "https://qa-library-dev.herokuapp.com/api",
-  })
+  server = createServer
 })
 
 afterEach(() => {
