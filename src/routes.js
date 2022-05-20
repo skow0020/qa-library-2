@@ -12,7 +12,6 @@ import IconGitHub from '@material-ui/icons/GitHub';
 import IconLibraryBooks from '@material-ui/icons/LibraryBooks';
 import IconLink from '@material-ui/icons/Link';
 import IconQuestionAnswer from '@material-ui/icons/QuestionAnswer';
-import InOfficeBook from 'views/InOfficeBook/InOfficeBook';
 import Info from 'views/Info/Info';
 import NotFound from 'components/common/NotFound';
 import QADashboard from 'views/QADashboard/QADashboard';
@@ -98,12 +97,6 @@ const routes =  [
     layout: DefaultLayout,
     element: Search,
     name: 'Search'
-  },
-  {
-    path: '/officeBook/:office_book_id',
-    layout: DefaultLayout,
-    element: InOfficeBook,
-    name: 'In-Office Book'
   },
   {
     element: NotFound,
