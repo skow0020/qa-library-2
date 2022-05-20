@@ -19,7 +19,13 @@ import ResourceLinks from 'views/ResourceLinks/ResourceLinks';
 import Search from 'views/Search';
 import Tutorials from 'views/Tutorials/Tutorials';
 
-const routes =  [
+const routes = [
+  {
+    path: '/',
+    layout: DefaultLayout,
+    element: QADashboard,
+    name: 'Dashboard'
+  },
   {
     path: '/qa-dashboard',
     layout: DefaultLayout,
@@ -99,6 +105,7 @@ const routes =  [
     name: 'Search'
   },
   {
+    path: '*',
     element: NotFound,
     layout: DefaultLayout
   }

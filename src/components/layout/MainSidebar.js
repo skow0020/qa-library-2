@@ -5,7 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from 'assets/jss/components/sidebarStyle.js';
@@ -21,6 +21,9 @@ export default function MainSidebar(props) {
 
   function closeIfMobile() {
     if (props.open) props.handleDrawerToggle();
+    // eslint-disable-next-line
+    const [value, setValue] = useState(0);
+    return () => setValue(value => value + 1); // Used to force a re-render and highlight selected item
   }
 
   const { color, logo, image, logoText, routes } = props;
