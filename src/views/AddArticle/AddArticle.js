@@ -1,16 +1,17 @@
-import AlertModal, { showAlert } from 'components/common/AlertModal'
-import React, { useState } from 'react'
-
 import Button from '@material-ui/core/Button'
-import CategoriesSelection from 'components/common/CategoriesSelection'
-import Colors from 'utils/Colors'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
+import { makeStyles } from '@material-ui/core/styles'
+import axios from 'axios'
+import AlertModal, { showAlert } from 'components/common/AlertModal'
+import CategoriesSelection from 'components/common/CategoriesSelection'
 import LanguagesSelection from 'components/common/LanguagesSelection'
 import PageTitle from 'components/common/PageTitle'
 import TextField from 'components/common/TextField'
-import axios from 'axios'
-import { makeStyles } from '@material-ui/core/styles'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Colors from 'utils/Colors'
+
 
 const useStyles = makeStyles((theme) => ({
   submit: {
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddArticle(props) {
   const classes = useStyles()
+  const navigate = useNavigate()
   const [backgroundImage, setBackgroundImage] = useState('')
   const [author, setAuthor] = useState('')
   const [category, setCategory] = useState('General')
@@ -70,7 +72,7 @@ export default function AddArticle(props) {
 
   const nextPath = (path) => {
     setTimeout(() => {
-      props.history.push(path)
+      navigate(path)
     }, 2000)
   }
 

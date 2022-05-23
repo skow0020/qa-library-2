@@ -3,17 +3,19 @@ import Hidden from '@material-ui/core/Hidden'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import { NavLink } from 'react-router-dom'
-import PropTypes from 'prop-types'
-import React, { useState } from 'react'
-import classNames from 'classnames'
 import { makeStyles } from '@material-ui/core/styles'
 import styles from 'assets/jss/components/sidebarStyle.js'
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const useStyles = makeStyles(styles)
 
 export default function MainSidebar(props) {
   const classes = useStyles()
+  // eslint-disable-next-line
+  const [value, setValue] = useState(0)
 
   function activeRoute(routeName) {
     return window.location.href.indexOf(routeName) > -1 ? true : false
@@ -21,8 +23,6 @@ export default function MainSidebar(props) {
 
   function closeIfMobile() {
     if (props.open) props.handleDrawerToggle()
-    // eslint-disable-next-line
-    const [value, setValue] = useState(0);
     return () => setValue(value => value + 1) // Used to force a re-render and highlight selected item
   }
 

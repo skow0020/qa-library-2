@@ -1,0 +1,12 @@
+{
+    "qaLibraryLogo": "#main-logo",
+    "qaDashboard": "#qa-dashboard",
+    "Articles": "#articles",
+    "resourceLinks": "#resource-links",
+    "rightResourceLinks": "#right-sidebar #resource-links",
+    "Books": "#books",
+    "Tutorials": "#tutorials",
+    "Example Repos": "#example-repos",
+    "inOfficeLibrary": "#library-dashboard",
+    "rightInOfficeLibrary": "#right-sidebar #library-dashboard"
+}

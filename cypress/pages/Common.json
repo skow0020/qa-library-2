@@ -1,0 +1,7 @@
+{
+    "pageTitle": ".page-title",
+    "submit": "#submit-button",
+    "navLink": "#mobile-menu",
+    "alertModal": "#alert-message-id",
+    "loadingSpinner": "#loading"
+}
