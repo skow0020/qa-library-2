@@ -3,3 +3,14 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
+import { createServer } from './testHelpers/server'
+
+let server
+
+beforeEach(() => {
+  server = createServer()
+})
+
+afterEach(() => {
+  server.shutdown()
+})

@@ -2,25 +2,12 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { clickDropdown } from 'testHelpers/rtlHelpers'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { createServer } from '../../testHelpers/server'
 
 import Tutorials from './Tutorials'
-import { tutorials } from './testData'
-
-let server
-
-beforeEach(() => {
-  server = createServer
-})
-
-afterEach(() => {
-  server.shutdown()
-})
 
 describe('Tutorials Unit Tests', () => {
   test('Tutorials renders', async () => {
     const user = userEvent.setup()
-    server.get('/tutorials', () => tutorials)
 
     render(
       <Router>
