@@ -1,9 +1,5 @@
 import { createServer as createMirageServer } from 'miragejs'
-import { articles } from '../views/Articles/testData'
-import { books } from '../views/Books/testData'
-import { resourceLinks } from '../views/ResourceLinks/testData'
-import { exampleRepos } from '../views/ExampleRepos/testData'
-import { tutorials } from '../views/Tutorials/testData'
+import { articles, books, resourceLinks, exampleRepos, tutorials } from './data'
 
 export const createServer = () => {
     let server = createMirageServer({
