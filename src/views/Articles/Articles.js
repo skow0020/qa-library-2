@@ -1,20 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import React, { useEffect, useState } from 'react'
-
 import Button from '@material-ui/core/Button'
+import Chip from '@material-ui/core/Chip'
+import Grid from '@material-ui/core/Grid'
+import { makeStyles } from '@material-ui/core/styles'
+import { getArticles } from 'api/api'
 import CardComponent from 'components/common/CardComponent'
 import CategoriesSelection from 'components/common/CategoriesSelection'
-import Chip from '@material-ui/core/Chip'
-import Colors from 'utils/Colors'
-import Grid from '@material-ui/core/Grid'
 import LanguagesSelection from 'components/common/LanguagesSelection'
-import { Link } from 'react-router-dom'
 import LoadError from 'components/common/LoadError'
 import Loading from 'components/common/Loading'
 import PageTitle from 'components/common/PageTitle'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import Colors from 'utils/Colors'
 import { getCategoryTheme } from 'utils/util'
-import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   addButton: {
@@ -32,26 +32,21 @@ export default function Articles() {
   const [language, setLanguage] = useState('')
   const [error, setError] = useState('')
 
-  useEffect(() => { getArticles() }, [category, language])
+  useEffect(() => { filterArticles() }, [category, language])
 
-  const getArticles = () => {
+  const filterArticles = () => {
     const categoryFilter = category ? `category=${category}` : ''
     const languageFilter = language ? `language=${language}` : ''
     const filter = `${categoryFilter}&${languageFilter}`
 
     setIsLoading(true)
-    fetch(`${process.env.REACT_APP_ENV_URL}/api/articles?${filter}`)
-      .then(response => response.json())
-      .then(
-        data => {
-          setArticles(data.data)
-          setIsLoading(false)
-        },
-        error => {
-          setError(error)
-          setIsLoading(false)
-        }
-      )
+    getArticles(filter)
+      .then(response => {
+        setArticles(response.data)
+      }).catch(error => {
+        setError(error.message)
+      })
+    setIsLoading(false)
   }
 
   if (isLoading) return <Loading />
@@ -73,6 +68,7 @@ export default function Articles() {
         </form>
       </Grid>
       <Grid container spacing={4}>
+        {!articles.length && <LoadError error="No articles match filter" />}
         {articles.map((post, idx) => (
           <Grid item md={4} key={idx}>
             <CardComponent
