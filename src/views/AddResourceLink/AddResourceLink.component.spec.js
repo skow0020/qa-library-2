@@ -1,12 +1,17 @@
-import AddResourceLink from './AddResourceLink'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { clickDropdown, setTextBoxValue } from 'testHelpers/rtlHelpers'
+import AddResourceLink from './AddResourceLink'
 
 describe('AddResourceLink Unit Tests', () => {
   test('AddResourceLink renders', async () => {
     const user = userEvent.setup()
-    render(<AddResourceLink />)
+    render(
+      <Router>
+        <AddResourceLink />
+      </Router>
+    )
 
     screen.getByRole('heading', { name: 'Add a Resource Link' })
     
@@ -21,6 +26,6 @@ describe('AddResourceLink Unit Tests', () => {
 
     const submit = screen.getByRole('button', { name: 'Submit' })
     user.click(submit)
-    //Check network??
+    await screen.findByText('ResourceLink added successfully')
   }, 10000)
 })

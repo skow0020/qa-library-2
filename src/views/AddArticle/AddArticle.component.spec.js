@@ -1,12 +1,17 @@
-import AddArticle from './AddArticle'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { clickDropdown, setTextBoxValue } from 'testHelpers/rtlHelpers'
+import AddArticle from './AddArticle'
 
 describe('AddArticle Unit Tests', () => {
   test('AddArticle renders', async () => {
     const user = userEvent.setup()
-    render(<AddArticle />)
+    render(
+      <Router>
+        <AddArticle />
+      </Router>
+    )
 
     screen.getByRole('heading', { name: 'Add an Article' })
 
@@ -22,6 +27,6 @@ describe('AddArticle Unit Tests', () => {
 
     const submit = screen.getByRole('button', { name: 'Submit' })
     user.click(submit)
-    //Check network??
+    await screen.findByText('Article added successfully')
   }, 10000)
 })

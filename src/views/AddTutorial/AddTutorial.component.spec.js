@@ -1,13 +1,17 @@
-import AddTutorial from './AddTutorial'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { clickDropdown } from 'testHelpers/rtlHelpers'
-import { setTextBoxValue } from 'testHelpers/rtlHelpers'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { clickDropdown, setTextBoxValue } from 'testHelpers/rtlHelpers'
+import AddTutorial from './AddTutorial'
 
 describe('AddTutorial Unit Tests', () => {
   test('AddTutorial renders', async () => {
     const user = userEvent.setup()
-    render(<AddTutorial />)
+    render(
+      <Router>
+        <AddTutorial />
+      </Router>
+    )
 
     screen.getByRole('heading', { name: 'Add a Tutorial' })
     await setTextBoxValue(user, 'Title', 'good omens')
@@ -21,6 +25,6 @@ describe('AddTutorial Unit Tests', () => {
 
     const submit = screen.getByRole('button', { name: 'Submit' })
     user.click(submit)
-    //Check network??
+    await screen.findByText('Tutorial added successfully')
   }, 10000)
 })

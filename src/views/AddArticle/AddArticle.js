@@ -12,7 +12,6 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Colors from 'utils/Colors'
 
-
 const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
