@@ -28,14 +28,14 @@ import * as sideBar from '../components/sideBar.json'
 import * as common from '../pages/Common.json'
 
 Cypress.Commands.add('navigate', (page, size) => {
-    if (!Cypress._.isArray(size)) {
-      cy.get(common.navLink).click()
-      cy.get(`#right-sidebar ${sideBar[page]}`).click()
-    }
-    else cy.get(sideBar[page]).click()
-    cy.get(common.pageTitle).should('have.text', page)
-  })
-  
-  Cypress.Commands.add('isFirefox', () => {
-    return Cypress.isBrowser('Firefox')
-  })
+  if (!Cypress._.isArray(size)) {
+    cy.get(common.navLink).click()
+    cy.get(`#right-sidebar ${sideBar[page]}`).click()
+  }
+  else cy.get(sideBar[page]).click()
+  cy.get(common.pageTitle).should('have.text', page)
+})
+
+Cypress.Commands.add('isFirefox', () => {
+  return Cypress.isBrowser('Firefox')
+})
