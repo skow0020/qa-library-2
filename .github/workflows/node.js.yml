@@ -60,8 +60,6 @@ jobs:
       - name: 'UI Tests - Chrome'
         uses: cypress-io/github-action@v2
         with:
-          # we have already installed all dependencies above
-          install: false
           start: serve -s build
           wait-on: 'http://localhost:3000'
           # wait-on-timeout: 120
