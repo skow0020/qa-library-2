@@ -26,8 +26,6 @@ jobs:
           # Disable running of tests within install job
           runTests: false
           build: npm run build
-      - run: npm ci
-      - run: npm run build --if-present
       - run: npm run lint
       - run: npm test
 
@@ -57,12 +55,14 @@ jobs:
           name: build
           path: build
 
+      - run: npm i -g serve
+
       - name: 'UI Tests - Chrome'
         uses: cypress-io/github-action@v2
         with:
           # we have already installed all dependencies above
           install: false
-          start: npm start
+          start: serve -s build
           wait-on: 'http://localhost:3000'
           # wait-on-timeout: 120
           browser: chrome
