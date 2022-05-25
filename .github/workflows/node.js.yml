@@ -32,7 +32,7 @@ jobs:
   install:
     runs-on: ubuntu-latest
     container: cypress/browsers:node16.5.0-chrome94-ff93
-    needs: build
+    needs: build-and-test
     steps:
       - name: Checkout
         uses: actions/checkout@v2
