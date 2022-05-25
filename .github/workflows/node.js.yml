@@ -13,7 +13,7 @@ env:
   REACT_APP_ENV_URL: "https://qa-library-dev.herokuapp.com"
 
 jobs:
-  build:
+  build-and-test:
 
     runs-on: ubuntu-latest
 
@@ -32,6 +32,7 @@ jobs:
   install:
     runs-on: ubuntu-latest
     container: cypress/browsers:node16.5.0-chrome94-ff93
+    needs: build
     steps:
       - name: Checkout
         uses: actions/checkout@v2
