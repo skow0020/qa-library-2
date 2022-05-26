@@ -13,7 +13,7 @@ env:
   REACT_APP_ENV_URL: "https://qa-library-dev.herokuapp.com"
 
 jobs:
-  install:
+  install-build-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,6 +34,23 @@ jobs:
           name: build
           if-no-files-found: error
           path: build
+  quality-gate:
+    name: QualityGate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      # If you wish to fail your job when the Quality Gate is red, uncomment the
+      # following lines. This would typically be used to fail a deployment.
+      # - uses: sonarsource/sonarqube-quality-gate-action@master
+      #   timeout-minutes: 5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   ui-chrome-tests:
     runs-on: ubuntu-latest
