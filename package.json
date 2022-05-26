@@ -52,5 +52,22 @@
     "eslint-plugin-jest-dom": "^4.0.1",
     "eslint-plugin-testing-library": "^5.5.0",
     "msw": "^0.41.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!src/assets/**",
+      "!src/testHelpers/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 45,
+        "functions": 65,
+        "lines": 70,
+        "statements": 70
+      }
+    },
+    "coverageReporters": ["text"]
   }
 }
