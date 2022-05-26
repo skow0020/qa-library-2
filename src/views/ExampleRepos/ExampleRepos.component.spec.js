@@ -1,11 +1,10 @@
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { rest } from 'msw'
-import { exampleRepos } from 'testhelpers/data'
+import { exampleRepos } from 'testHelpers/data'
 import { clickDropdown } from 'testHelpers/rtlHelpers'
 import { server } from 'testHelpers/server'
 import ExampleRepos from './ExampleRepos'
-
 
 describe('ExampleRepos Unit Tests', () => {
   test('ExampleRepos renders and filters', async () => {
