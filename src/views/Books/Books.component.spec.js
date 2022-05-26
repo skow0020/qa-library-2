@@ -2,6 +2,7 @@ import { render, screen, waitForElementToBeRemoved } from '@testing-library/reac
 import userEvent from '@testing-library/user-event'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { clickDropdown } from 'testHelpers/rtlHelpers'
+import { createBasicServer } from 'testHelpers/server'
 import Books from './Books'
 
 describe('Books Unit Tests', () => {
@@ -22,5 +23,21 @@ describe('Books Unit Tests', () => {
     await clickDropdown(user, 'Language', 'Swift')
     await waitForElementToBeRemoved(() => screen.queryByText('Python'))
     expect(screen.getByText('Swift')).toBeInTheDocument()
+  })
+
+  test('-Books filter returns empty', async () => {
+    let server = createBasicServer()
+    server.get('/books', () => { return { data: [] } })
+
+    render(
+      <Router>
+        <Books />
+      </Router>
+    )
+    await screen.findByText('Books')
+    screen.getByRole('button', { name: 'Add Book' })
+    await screen.findByText('No books match filter')
+
+    server.shutdown()
   })
 })

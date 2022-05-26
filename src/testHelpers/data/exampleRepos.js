@@ -1,4 +1,4 @@
-export const repos = [
+export const exampleRepos = [
   {
     'id': 198064850,
     'node_id': 'MDEwOlJlcG9zaXRvcnkxOTgwNjQ4NTA=',
