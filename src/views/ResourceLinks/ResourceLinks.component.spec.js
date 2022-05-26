@@ -1,11 +1,17 @@
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { rest } from 'msw'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { resourceLinks } from 'testHelpers/data'
 import { clickDropdown } from 'testHelpers/rtlHelpers'
+import { libraryAPI, server } from 'testHelpers/server'
 import ResourceLinks from './ResourceLinks'
 
 describe('ResourceLinks Unit Tests', () => {
   test('ResourceLinks renders', async () => {
+    server.use(
+      rest.get(libraryAPI('resourceLinks'), (req, res, ctx) => { return res(ctx.json(resourceLinks)) })
+    )
     const user = userEvent.setup()
 
     render(

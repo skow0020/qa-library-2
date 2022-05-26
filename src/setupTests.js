@@ -3,15 +3,12 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
-import { needsDefaultData } from 'testHelpers/rtlHelpers'
-import { createServer } from './testHelpers/server'
+import { server } from 'testHelpers/server'
 
-let server
+beforeAll(() => server.listen())
 
-beforeAll(() => {
-  if (needsDefaultData) server = createServer()
-})
+// Reset any runtime request handlers we may add during the tests.
+afterEach(() => server.resetHandlers())
 
-afterAll(() => {
-  if (needsDefaultData) server.shutdown()
-})
+// Disable API mocking after the tests are done.
+afterAll(() => server.close())

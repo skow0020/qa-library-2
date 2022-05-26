@@ -1,12 +1,17 @@
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { rest } from 'msw'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { articles } from 'testHelpers/data'
 import { clickDropdown } from 'testHelpers/rtlHelpers'
-import { createBasicServer } from 'testHelpers/server'
+import { libraryAPI, server } from 'testHelpers/server'
 import Articles from './Articles'
 
 describe('Articles Unit Tests', () => {
   test('Articles renders and filters', async () => {
+    server.use(
+      rest.get(libraryAPI('articles'), (req, res, ctx) => { return res(ctx.json(articles)) })
+    )
     const user = userEvent.setup()
 
     render(
@@ -14,6 +19,7 @@ describe('Articles Unit Tests', () => {
         <Articles />
       </Router>
     )
+
     await screen.findByText('Articles')
     screen.getByRole('button', { name: 'Add Article' })
     await screen.findAllByText('How to sand a hippo')
@@ -25,8 +31,11 @@ describe('Articles Unit Tests', () => {
   })
 
   test('-Articles filter returns empty', async () => {
-    let server = createBasicServer()
-    server.get('/articles', () => { return { data: [] } })
+    server.use(
+      rest.get(libraryAPI('articles'), (req, res, ctx) => {
+        return res(ctx.json({ data: [] }))
+      })
+    )
 
     render(
       <Router>
@@ -36,7 +45,5 @@ describe('Articles Unit Tests', () => {
     await screen.findByText('Articles')
     screen.getByRole('button', { name: 'Add Article' })
     await screen.findByText('No articles match filter')
-
-    server.shutdown()
   })
 })
