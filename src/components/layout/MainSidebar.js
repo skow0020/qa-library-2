@@ -12,10 +12,15 @@ import { NavLink } from 'react-router-dom'
 
 const useStyles = makeStyles(styles)
 
-export default function MainSidebar(props) {
-  const classes = useStyles()
-  // eslint-disable-next-line
+function useForceUpdate(){
+  // eslint-disable-next-line no-unused-vars
   const [value, setValue] = useState(0)
+  return () => setValue(value => value + 1)
+}
+
+export default function MainSidebar(props) {
+  const forceUpdate = useForceUpdate()
+  const classes = useStyles()
 
   function activeRoute(routeName) {
     return window.location.href.indexOf(routeName) > -1 ? true : false
@@ -23,7 +28,7 @@ export default function MainSidebar(props) {
 
   function closeIfMobile() {
     if (props.open) props.handleDrawerToggle()
-    return () => setValue(value => value + 1) // Used to force a re-render and highlight selected item
+    forceUpdate()
   }
 
   const { color, logo, image, logoText, routes } = props
