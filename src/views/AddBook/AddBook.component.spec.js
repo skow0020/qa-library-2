@@ -9,7 +9,7 @@ import AddBook from './AddBook'
 describe('AddBook Unit Tests', () => {
   test('AddBook renders', async () => {
     server.use(
-      rest.post(libraryAPI('articles'), (req, res, ctx) => {
+      rest.post(libraryAPI('books'), (req, res, ctx) => {
         return res(ctx.json({ success: true, post: req.body }))
       })
     )
