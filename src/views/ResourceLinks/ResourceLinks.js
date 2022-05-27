@@ -43,10 +43,11 @@ export default function ResourceLinks() {
     getResourceLinks(filter)
       .then(response => {
         setResourceLinks(response.data)
+        setIsLoading(false)
       }).catch(error => {
         setError(error.message)
+        setIsLoading(false)
       })
-    setIsLoading(false)
   }
 
   if (isLoading) return <Loading />

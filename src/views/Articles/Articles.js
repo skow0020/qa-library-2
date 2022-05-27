@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
 export default function Articles() {
   const classes = useStyles()
   const [articles, setArticles] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [category, setCategory] = useState('')
   const [language, setLanguage] = useState('')
   const [error, setError] = useState('')
@@ -43,10 +43,11 @@ export default function Articles() {
     getArticles(filter)
       .then(response => {
         setArticles(response.data)
+        setIsLoading(false)
       }).catch(error => {
         setError(error.message)
+        setIsLoading(false)
       })
-    setIsLoading(false)
   }
 
   if (isLoading) return <Loading />
@@ -68,7 +69,7 @@ export default function Articles() {
         </form>
       </Grid>
       <Grid container spacing={4}>
-        {!articles.length && <LoadError error="No articles match filter" />}
+        {!articles.length && !isLoading && <LoadError error="No articles match filter" />}
         {articles.map((post, idx) => (
           <Grid item md={4} key={idx}>
             <CardComponent
