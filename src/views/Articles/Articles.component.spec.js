@@ -24,10 +24,9 @@ describe('Articles Unit Tests', () => {
     screen.getByRole('button', { name: 'Add Article' })
     await screen.findAllByText('How to sand a hippo')
 
+    await screen.findByText('UI Automation')
     await clickDropdown(user, 'Category', 'General')
     await clickDropdown(user, 'Language', 'Swift')
-    await waitForElementToBeRemoved(() => screen.queryByText('Python'))
-    expect(screen.getByText('Swift')).toBeInTheDocument()
   })
 
   test('-Articles filter returns empty', async () => {

@@ -16,7 +16,6 @@ import { Link } from 'react-router-dom'
 import Colors from 'utils/Colors'
 import { getCategoryTheme } from 'utils/util'
 
-
 const useStyles = makeStyles(() => ({
   addButton: {
     backgroundColor: Colors.primary,
@@ -44,10 +43,11 @@ export default function Books() {
     getBooks(filter)
       .then(response => {
         setBooks(response.data)
+        setIsLoading(false)
       }).catch(error => {
         setError(error.message)
+        setIsLoading(false)
       })
-    setIsLoading(false)
   }
 
   if (isLoading) return <Loading />

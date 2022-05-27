@@ -43,10 +43,11 @@ export default function Tutorials() {
     getTutorials(filter)
       .then(response => {
         setTutorials(response.data)
+        setIsLoading(false)
       }).catch(error => {
         setError(error.message)
+        setIsLoading(false)
       })
-    setIsLoading(false)
   }
 
   if (isLoading) return <Loading />
