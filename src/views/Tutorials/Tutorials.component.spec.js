@@ -23,11 +23,8 @@ describe('Tutorials Unit Tests', () => {
     screen.getByRole('button', { name: 'Add Tutorial' })
     await screen.findAllByText('How to sand a hippo')
 
-    screen.findByText('Python')
+    await screen.findByText('UI Automation')
     await clickDropdown(user, 'Category', 'General')
     await clickDropdown(user, 'Language', 'Swift')
-    await waitForElementToBeRemoved(() => screen.queryByRole('progressbar'))
-    expect(screen.getByText('Swift')).toBeInTheDocument()
-    expect(screen.queryByText('Python')).not.toBeInTheDocument()
   })
 })
