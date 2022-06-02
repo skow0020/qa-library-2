@@ -1,8 +1,8 @@
 /// <reference types="Cypress" />
 
-import * as addBook from '../pages/AddBook.json'
-import * as books from '../pages/Books.json'
-import * as common from '../pages/Common.json'
+import * as addBook from '../selectors/AddBook.json'
+import * as books from '../selectors/Books.json'
+import * as common from '../selectors/Common.json'
 import { selectDropdown, setViewport, sizes } from '../support/helpers'
 
 

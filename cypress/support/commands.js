@@ -24,16 +24,15 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import * as sideBar from '../components/sideBar.json'
-import * as common from '../pages/Common.json'
+import * as sideBar from '../selectors/common/sideBar.json'
 
 Cypress.Commands.add('navigate', (page, size) => {
   if (!Cypress._.isArray(size)) {
-    cy.get(common.navLink).click()
+    cy.get('#mobile-menu').click()
     cy.get(`#right-sidebar ${sideBar[page]}`).click()
   }
   else cy.get(sideBar[page]).click()
-  cy.get(common.pageTitle).should('have.text', page)
+  cy.get('.page-title').should('have.text', page)
 })
 
 Cypress.Commands.add('isFirefox', () => {

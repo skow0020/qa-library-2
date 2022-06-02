@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import * as exampleRepos from '../pages/ExampleRepos.json'
+import * as exampleRepos from '../selectors/ExampleRepos.json'
 import { selectDropdown, setViewport, sizes } from '../support/helpers'
 
 context('Example Repos', () => {

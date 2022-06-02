@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
-import * as header from '../components/header.json'
-import * as search from '../pages/Search.json'
+import * as header from '../selectors/common/header.json'
+import * as search from '../selectors/Search.json'
 import { setViewport } from '../support/helpers'
 
 context('Search', () => {

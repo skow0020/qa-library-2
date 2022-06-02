@@ -1,8 +1,8 @@
 /// <reference types="Cypress" />
 
-import * as addArticle from '../pages/AddArticle.json'
-import * as articles from '../pages/Articles.json'
-import * as common from '../pages/Common.json'
+import * as addArticle from '../selectors/AddArticle.json'
+import * as articles from '../selectors/Articles.json'
+import * as common from '../selectors/Common.json'
 import { selectDropdown, setViewport, sizes } from '../support/helpers'
 
 context('Articles', () => {
