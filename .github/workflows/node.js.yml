@@ -62,6 +62,7 @@ jobs:
           start: serve -s build
           wait-on: 'http://localhost:3000'
           browser: chrome
+          config-file: cypress.config.js
         #   record: true
         #   parallel: true
         #   group: 'UI - Chrome'
