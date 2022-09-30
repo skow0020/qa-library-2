@@ -9,7 +9,7 @@ import AddResourceLink from './AddResourceLink'
 describe('AddResourceLink Unit Tests', () => {
   test('AddResourceLink renders', async () => {
     server.use(
-      rest.post(libraryAPI('articles'), (req, res, ctx) => {
+      rest.post(libraryAPI('resourceLinks'), (req, res, ctx) => {
         return res(ctx.json({ success: true, post: req.body }))
       })
     )
@@ -21,7 +21,7 @@ describe('AddResourceLink Unit Tests', () => {
     )
 
     screen.getByRole('heading', { name: 'Add a Resource Link' })
-    
+
     await setTextBoxValue(user, 'Title', 'good omens')
 
     await clickDropdown(user, 'Language', 'Python')
