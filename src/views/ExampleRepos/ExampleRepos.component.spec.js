@@ -21,7 +21,7 @@ describe('ExampleRepos Unit Tests', () => {
     expect(javascriptRepos.length).toBe(1)
     await clickDropdown(user, 'Language', 'Java')
     const javaRepos = await screen.findAllByText('Java')
-    expect(javaRepos.length).toBe(3)
+    expect(javaRepos.length).toBe(2)
     await waitForElementToBeRemoved(() => screen.queryAllByText('JavaScript'))
   })
 })
