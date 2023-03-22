@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import * as exampleRepos from '../selectors/ExampleRepos.json'
 import { selectDropdown, setViewport, sizes } from '../support/helpers'
 
@@ -7,6 +5,7 @@ context('Example Repos', () => {
   beforeEach(() => {
     // cy.login()
     cy.visit('/')
+    cy.eyesOpen()
   })
 
   sizes.forEach((size) => {
@@ -15,6 +14,8 @@ context('Example Repos', () => {
       cy.navigate('Example Repos', size)
       
       cy.get(exampleRepos.firstQARepoTitle)
+
+      (size !== 'iphone-6') && cy.eyesCheck()
     })
 
     it(`Filter by language - ${size}`, () => {

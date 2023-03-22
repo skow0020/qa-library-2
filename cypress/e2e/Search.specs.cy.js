@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import * as header from '../selectors/common/header.json'
 import * as search from '../selectors/Search.json'
 import { setViewport } from '../support/helpers'
@@ -36,6 +34,9 @@ context('Search', () => {
       .type('hippo')
       .type('{enter}')
       .should('have.value', 'hippo')
+
+    cy.openEyes()
+    cy.eyesCheck()
 
     cy.get(search.books)
       .should('have.length', 2)

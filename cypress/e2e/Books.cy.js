@@ -1,20 +1,14 @@
-/// <reference types="Cypress" />
-
 import * as addBook from '../selectors/AddBook.json'
 import * as books from '../selectors/Books.json'
 import * as common from '../selectors/Common.json'
 import { selectDropdown, setViewport, sizes } from '../support/helpers'
-
 
 context('Books', () => {
   beforeEach(() => {
     // cy.login()
     
     cy.visit('/')
-    cy.eyesOpen({
-      appName: 'QA Library',
-      testName: Cypress.currentTest.title
-    })
+    cy.openEyes()
   })
 
   sizes.forEach((size) => {
@@ -38,19 +32,14 @@ context('Books', () => {
           cy.get(addBook.category).should('have.text', category)
         })
 
+        cy.eyesCheck()
+
         cy.get(common.submit).click()
         cy.get(common.alertModal).should('have.text', 'Book added successfully')
 
         cy.url().should('contain', 'books')
         cy.get(books.cardPosts).should('have.length', booksLength + 1)
       })
-      
-      cy.eyesCheckWindow({
-        tag: 'Books',
-        target: 'window',
-        fully: true
-      })
-      cy.eyesClose()
     })
 
     it(`Filter by category - ${size}`, () => {
@@ -61,6 +50,8 @@ context('Books', () => {
       cy.get(books.cardPosts).should('have.length.greaterThan', 0)
       selectDropdown(books.category, 'Databases')
       cy.get(books.cardPosts).should('have.length', 0)
+
+      cy.eyesCheck()
     })
 
     it(`Filter by language - ${size}`, () => {

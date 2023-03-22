@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import * as addArticle from '../selectors/AddArticle.json'
 import * as articles from '../selectors/Articles.json'
 import * as common from '../selectors/Common.json'
@@ -9,6 +7,7 @@ context('Articles', () => {
   beforeEach(() => {
     // cy.login()
     cy.visit('/')
+    cy.openEyes()
   })
 
   sizes.forEach((size) => {
@@ -30,6 +29,8 @@ context('Articles', () => {
           cy.get(addArticle.category).should('have.text', category)
         })
 
+        cy.eyesCheck()
+
         cy.get(common.submit).click()
         cy.get(common.alertModal).should('have.text', 'Article added successfully')
 
@@ -47,6 +48,8 @@ context('Articles', () => {
       selectDropdown(articles.category, 'Databases')
       cy.get(common.loadingSpinner).should('not.exist')
       cy.get('@cardPosts').should('have.length', 0)
+
+      cy.eyesCheck()
     })
 
     it(`Filter by language - ${size}`, () => {

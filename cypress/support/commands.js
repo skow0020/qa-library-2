@@ -38,3 +38,24 @@ Cypress.Commands.add('navigate', (page, size) => {
 Cypress.Commands.add('isFirefox', () => {
   return Cypress.isBrowser('Firefox')
 })
+
+Cypress.Commands.add('openEyes', () => {
+  cy.eyesOpen({
+    appName: 'QA Library',
+    testName:  Cypress.currentTest.title
+  })
+})
+
+Cypress.Commands.add('eyesCheck', (options) => {
+  const tag = options ? options.tag : 'Common'
+  const target = options ? options.target : 'Window'
+  const fully = options ? options.fully : true
+
+  cy.eyesCheckWindow({
+    tag: tag,
+    target: target,
+    fully: fully
+  })
+  cy.eyesClose()
+})
+
