@@ -42,7 +42,7 @@ Cypress.Commands.add('isFirefox', () => {
 Cypress.Commands.add('openEyes', () => {
   cy.eyesOpen({
     appName: 'QA Library',
-    testName:  Cypress.currentTest.title
+    testName:  Cypress.currentTest.titlePath.join(' ')
   })
 })
 
