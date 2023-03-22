@@ -15,7 +15,7 @@ context('Example Repos', () => {
       
       cy.get(exampleRepos.firstQARepoTitle)
 
-      (size !== 'iphone-6') && cy.eyesCheck()
+      cy.eyesCheck()
     })
 
     it(`Filter by language - ${size}`, () => {
