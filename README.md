@@ -1,3 +1,32 @@
+# Updated and simpler version of QA Library
+
+(Without working authentication, in house library)
+
+## Available Scripts
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+### `npm test -- --coverage`
+
+Runs React Testing Library component tests 
+
+### `npm run cypress:run -- --component`
+
+Runs the one and only example of a Cypress-based component test
+
+### `npm run cypress:open`
+
+Opens the Cypress test dashboard (Requires app to be started to run locally)
+
+### `npm run cypress:run`
+
+Runs Cypress tests headless as they do by default in CI
+
+
+
 # Getting Started with Create React App test
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
