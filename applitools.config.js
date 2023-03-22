@@ -30,7 +30,7 @@ module.exports = {
 
         // Add 2 mobile emulation devices with different orientations for cross-browser testing in the Ultrafast Grid.
         // Other mobile devices are available, including iOS.
-        // {deviceName: 'Pixel 2', screenOrientation: 'portrait'},
+        {deviceName: 'Pixel 2', screenOrientation: 'portrait'},
         // {deviceName: 'Nexus 10', screenOrientation: 'landscape'},
     ]
 }

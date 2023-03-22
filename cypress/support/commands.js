@@ -47,15 +47,18 @@ Cypress.Commands.add('openEyes', () => {
 })
 
 Cypress.Commands.add('eyesCheck', (options) => {
-  const tag = options ? options.tag : 'Common'
-  const target = options ? options.target : 'Window'
-  const fully = options ? options.fully : true
-
-  cy.eyesCheckWindow({
-    tag: tag,
-    target: target,
-    fully: fully
-  })
-  cy.eyesClose()
+  // Only run visual check when testing large views
+  if (Cypress.config('viewportWidth') > 1000) {
+    const tag = options ? options.tag : 'Common'
+    const target = options ? options.target : 'Window'
+    const fully = options ? options.fully : true
+  
+    cy.eyesCheckWindow({
+      tag: tag,
+      target: target,
+      fully: fully
+    })
+    cy.eyesClose()
+  }
 })
 
