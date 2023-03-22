@@ -9,7 +9,12 @@ import { selectDropdown, setViewport, sizes } from '../support/helpers'
 context('Books', () => {
   beforeEach(() => {
     // cy.login()
+    
     cy.visit('/')
+    cy.eyesOpen({
+      appName: 'QA Library',
+      testName: Cypress.currentTest.title
+    })
   })
 
   sizes.forEach((size) => {
@@ -39,6 +44,13 @@ context('Books', () => {
         cy.url().should('contain', 'books')
         cy.get(books.cardPosts).should('have.length', booksLength + 1)
       })
+      
+      cy.eyesCheckWindow({
+        tag: 'Books',
+        target: 'window',
+        fully: true
+      })
+      cy.eyesClose()
     })
 
     it(`Filter by category - ${size}`, () => {

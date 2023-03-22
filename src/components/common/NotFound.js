@@ -6,9 +6,9 @@ const NotFound = () => (
     container
     alignItems="center"
     justifyContent="center"
-    style={{ minHeight: '60vh' }}
+    style={{ minHeight: '60vh', alignItems: 'center', justifyContent: 'center' }}
   >
-    <h3 id="not-found" align="center">Hmm... the page you are looking for seems to have disappeared... if it has ever existed</h3>
+    <h3 id="not-found">Hmm... the page you are looking for seems to have disappeared... if it has ever existed</h3>
   </Grid>
 )
 
