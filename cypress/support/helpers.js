@@ -5,6 +5,7 @@ export const sizes = ['iphone-6', [1024, 768]]
 export const setViewport = (size) => {
   if (Cypress._.isArray(size)) {
     cy.viewport(size[0], size[1])
+    Cypress.config('viewportWidth', size[0])
   } else {
     cy.viewport(size)
   }
